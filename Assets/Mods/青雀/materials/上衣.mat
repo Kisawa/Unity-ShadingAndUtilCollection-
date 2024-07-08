@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: "\u4E0A\u8863"
+  m_Shader: {fileID: 4800000, guid: 38eae7bbe0a0b6a408ab045491e26498, type: 3}
+  m_ValidKeywords:
+  - _LIGHTING_ON
+  - _LIGHT_MAP_ON
+  - _RIM_ON
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseMap:
+        m_Texture: {fileID: 2800000, guid: 6692e96092462f440b7f4784fb907a16, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LightMap:
+        m_Texture: {fileID: 2800000, guid: e062ee5e0ab1f2a479e0c3674ae4bda8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _StockingsMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _StockingsRamp:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AOStrength: 0.5
+    - _AlphaClip: 0
+    - _BackFaceOutlineDirectionChannel: 0
+    - _BackFaceOutlineFixMultiplier: 0.03
+    - _BackFaceOutlineWidth: 0.001
+    - _BackFaceOutlineZOffset: 0
+    - _BlendOp: 0
+    - _Cull: 2
+    - _Cutoff: 0.5
+    - _DisableSpecularHighlights: 0
+    - _DstBlend: 0
+    - _EmissionOn: 0
+    - _GIMixBaseColorUsage: 0.5
+    - _GIStrength: 1
+    - _LightOn: 1
+    - _MainLightColorUsage: 1
+    - _MetalThreshold: 0.52
+    - _PremultiplyAlbedo: 0
+    - _Queue: 1
+    - _QueueOffset: 0
+    - _ReceiveShadowBias: 0
+    - _ReceiveShadowOffset: 0
+    - _Rim: 1
+    - _RimFadeout: 1
+    - _RimThreshold: 0.1
+    - _RimWidth: 0.25
+    - _SHHardness: 1
+    - _ShadeSoftness: 0
+    - _ShadeStep: 0
+    - _ShadeThreshold: 1
+    - _SpecularExpon: 10
+    - _SpecularHighlights: 0
+    - _SpecularKs: 0.1
+    - _SpecularMetalKs: 1.25
+    - _SpecularNonMetalKs: 0.25
+    - _SrcBlend: 1
+    - _StockingsHardness: 0
+    - _StockingsPower: 1
+    - _StockingsUsage: 1
+    - _ZOffset: 0
+    - _ZTest: 4
+    - _ZWrite: 1
+    m_Colors:
+    - _BackColor: {r: 0.75, g: 0.75, b: 0.75, a: 1}
+    - _BackFaceOutlineColor: {r: 0.5566038, g: 0.30086437, b: 0.15490389, a: 1}
+    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _HeadForwardDirection: {r: 0, g: 0, b: 1, a: 1}
+    - _HeadRightDirection: {r: 1, g: 0, b: 0, a: 1}
+    - _RimColor: {r: 0.14150941, g: 0.14150941, b: 0.14150941, a: 1}
+    - _ShadowColor: {r: 0.49803922, g: 0.5921569, b: 0.6313726, a: 1}
+    - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
+--- !u!114 &7716573986475087830
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 5

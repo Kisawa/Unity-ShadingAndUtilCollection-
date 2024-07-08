@@ -1,0 +1,119 @@
+#pragma kernel CalcSSPR
+#pragma kernel FillHoles
+
+SamplerState PointClampSampler;
+SamplerState LinearClampSampler;
+
+RWTexture2D<half4> RW_SSPRMap;
+RWTexture2D<float> RW_HashBuffer;
+Texture2D<half4> _CameraTexture;
+Texture2D<float> _DepthTexture;
+
+float _HorizontalPlaneHeightWS;
+float _Fade;
+float _FadeHorizontalThreshold;
+float _HeightStretch;
+float _HeightStretchPower;
+float2 _RTSize;
+float4x4 _InverseVP;
+float4x4 _VP;
+
+float3 CalcPositionWS(float2 screenUV, float depth)
+{
+	float4 clipPos;
+	clipPos.xy = screenUV * 2 - 1;
+	clipPos.z = depth;
+	clipPos.w = 1;
+	float4 pos = mul(_InverseVP, clipPos);
+	float3 positionWS = pos.xyz / pos.w;
+	return positionWS;
+}
+
+float3 CalcMirrorPositionWS(float3 positionWS)
+{
+	float3 mirrorPositionWS = positionWS;
+	mirrorPositionWS.y -= _HorizontalPlaneHeightWS;
+	mirrorPositionWS.y *= -1;
+	mirrorPositionWS.y += _HorizontalPlaneHeightWS;
+	return mirrorPositionWS;
+}
+
+float2 TransformWorldToScreenUV(float3 positionWS)
+{
+	float heightStretch = pow(abs(positionWS.y - _HorizontalPlaneHeightWS), _HeightStretchPower) * _HeightStretch;
+	positionWS.y -= heightStretch;
+
+	float4 positionCS = mul(_VP, float4(positionWS, 1));
+	float2 positionNDC_xy = positionCS.xy / positionCS.w;
+	float2 screenUV = positionNDC_xy * 0.5 + 0.5;
+
+#if UNITY_UV_STARTS_AT_TOP
+	screenUV.y = 1.0 - screenUV.y;
+#endif
+	return screenUV;
+}
+
+half CalcFade(float2 screenUV, float mirrorPositionWSY)
+{
+	half fade = smoothstep(1, 1 - _Fade, screenUV.y);
+	half planeRefer = max(_FadeHorizontalThreshold, _HorizontalPlaneHeightWS - mirrorPositionWSY);
+	fade *= smoothstep(1, 1 - _Fade * planeRefer, abs(screenUV.x * 2 - 1));
+	return fade;
+}
+
+[numthreads(8, 8, 1)]
+void CalcSSPR(uint3 id : SV_DispatchThreadID)
+{
+	RW_SSPRMap[id.xy] = 0;
+	RW_HashBuffer[id.xy] = 0x0FFFFFFF;
+	float2 screenUV = id.xy / _RTSize;
+
+	float depth = _DepthTexture.SampleLevel(PointClampSampler, screenUV, 0);
+	float3 positionWS = CalcPositionWS(screenUV, depth);
+	if (positionWS.y <= _HorizontalPlaneHeightWS)
+		return;
+	float3 mirrorPositionWS = CalcMirrorPositionWS(positionWS);
+	float2 mirrorScreenUV = TransformWorldToScreenUV(mirrorPositionWS);
+	uint2 mirrorScreenID = mirrorScreenUV * _RTSize;
+
+	if (positionWS.y < RW_HashBuffer[mirrorScreenID])
+	{
+		half3 col = _CameraTexture.SampleLevel(LinearClampSampler, screenUV, 0).rgb;
+		half alpha = saturate(CalcFade(screenUV, mirrorPositionWS.y));
+		RW_SSPRMap[mirrorScreenID] = half4(col, alpha);
+		RW_HashBuffer[mirrorScreenID] = positionWS.y;
+	}
+}
+
+[numthreads(8, 8, 1)]
+void FillHoles(uint3 id : SV_DispatchThreadID)
+{
+	float hash = RW_HashBuffer[id.xy];
+	half4 col = RW_SSPRMap[id.xy];
+	if (hash == 0x0FFFFFFF)
+	{
+		uint2 _id = id.xy + uint2(-1, 0);
+		hash = RW_HashBuffer[_id];
+		col = RW_SSPRMap[_id];
+	}
+	if (hash == 0x0FFFFFFF)
+	{
+		uint2 _id = id.xy + uint2(1, 0);
+		hash = RW_HashBuffer[_id];
+		col = RW_SSPRMap[_id];
+	}
+	if (hash == 0x0FFFFFFF)
+	{
+		uint2 _id = id.xy + uint2(0, 1);
+		hash = RW_HashBuffer[_id];
+		col = RW_SSPRMap[_id];
+	}
+	if (hash == 0x0FFFFFFF)
+	{
+		uint2 _id = id.xy + uint2(0, -1);
+		hash = RW_HashBuffer[_id];
+		col = RW_SSPRMap[_id];
+	}
+	RW_SSPRMap[id.xy] = col;
+	RW_HashBuffer[id.xy] = hash;
+}

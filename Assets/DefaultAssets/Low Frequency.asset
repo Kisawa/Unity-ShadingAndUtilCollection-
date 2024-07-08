@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e8444e13a1060b44985d1a0527cd55a, type: 3}
+  m_Name: Low Frequency
+  m_EditorClassIdentifier: 
+  PositionNoise:
+  - X:
+      Frequency: 13.14
+      Amplitude: 2
+      Constant: 0
+    Y:
+      Frequency: 2.71
+      Amplitude: 4.38
+      Constant: 0
+    Z:
+      Frequency: 3.48
+      Amplitude: 4.7
+      Constant: 0
+  - X:
+      Frequency: 5.8
+      Amplitude: 19.7
+      Constant: 0
+    Y:
+      Frequency: 3.25
+      Amplitude: -5.42
+      Constant: 0
+    Z:
+      Frequency: 2.04
+      Amplitude: -5.94
+      Constant: 0
+  - X:
+      Frequency: 7.29
+      Amplitude: -2.43
+      Constant: 0
+    Y:
+      Frequency: 3.44
+      Amplitude: 6.89
+      Constant: 0
+    Z:
+      Frequency: 5.04
+      Amplitude: 4.32
+      Constant: 0
+  OrientationNoise:
+  - X:
+      Frequency: 0
+      Amplitude: 0
+      Constant: 0
+    Y:
+      Frequency: 0
+      Amplitude: 0
+      Constant: 0
+    Z:
+      Frequency: 0
+      Amplitude: 0
+      Constant: 0
+  - X:
+      Frequency: 0
+      Amplitude: 0
+      Constant: 0
+    Y:
+      Frequency: 0
+      Amplitude: 0
+      Constant: 0
+    Z:
+      Frequency: 0
+      Amplitude: 0
+      Constant: 0
+  - X:
+      Frequency: 0
+      Amplitude: 0
+      Constant: 0
+    Y:
+      Frequency: 0
+      Amplitude: 0
+      Constant: 0
+    Z:
+      Frequency: 0
+      Amplitude: 0
+      Constant: 0

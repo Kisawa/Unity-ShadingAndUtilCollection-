@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Default_SpotVolumeLight
+  m_Shader: {fileID: 4800000, guid: f7e38a5c85558f74d933a1a92645fcfb, type: 3}
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _CookieSmoothness: 0.5
+    - _FadeOutDistance: 10
+    - _IlluminantRadius: 0
+    - _LightIndex: 0
+    - _NomralEpsilon: 0.01
+    - _Radius: 0.5
+    - _Radius0: 0.49
+    - _Radius1: 0
+    - _ScatterStrength: 3
+    - _ShapeSoftness: 1
+    - _Test: 10
+    - _Test1: -0.001
+    - _Thickness: 0.01
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorTint: {r: 1, g: 1, b: 1, a: 1}
+    - _Point0: {r: 0, g: 0, b: 0.499, a: 1}
+    - _Point1: {r: 0, g: 0, b: -0.499, a: 1}
+    - _Size: {r: 0, g: 0, b: 0.49, a: 0}
+    - _Size1: {r: 0, g: 0, b: -0.49, a: 1}
+  m_BuildTextureStacks: []

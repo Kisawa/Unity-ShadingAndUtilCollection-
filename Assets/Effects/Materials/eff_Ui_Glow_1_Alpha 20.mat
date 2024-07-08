@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: eff_Ui_Glow_1_Alpha 20
+  m_Shader: {fileID: 4800000, guid: a6303ce4d7da14741800c2ceafa55b86, type: 3}
+  m_ValidKeywords:
+  - _ISGRAY_A
+  - _OPENDISSOLVE_ON
+  - _OPENDISTURBANCE_ON
+  - _OPENMASK_B
+  - _PARTICLE_CUSTOM_DATA_ON
+  m_InvalidKeywords:
+  - _ManualCorrectGamma
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _DistubanceMaskTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DisturbanceTex:
+        m_Texture: {fileID: 2800000, guid: f871b094dbd167a4ea5040179640bf2f, type: 3}
+        m_Scale: {x: 4, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 4a693188c132aba43987dc037723a109, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: -0.06, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 0, y: 0}
+        m_Offset: {x: 0, y: 0}
+    - _dissolveTex:
+        m_Texture: {fileID: 2800000, guid: a1ac13ecec7a8eb469f4cc4cc73b0917, type: 3}
+        m_Scale: {x: 1, y: 4}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0.5
+    - _DepthTransformUsage: 0
+    - _DisableFguiClip: 0
+    - _Dst: 1
+    - _Exponsure: 1
+    - _FloorClipBias: 0
+    - _FloorClipColorBias: 0
+    - _FloorClipReferenceOn: 0
+    - _Fresnel: 0
+    - _GrayStep: 0.558
+    - _GrayThreshold: 0.405
+    - _IsGray: 4
+    - _MainTexScale: 1.5
+    - _ManualCorrectGamma: 1
+    - _OpenDissolve: 1
+    - _OpenDisturbance: 1
+    - _OpenFloorClip: 0
+    - _OpenMask: 3
+    - _ParticleCustomData_On: 1
+    - _PerspectiveCorrectUsage: 0
+    - _Src: 5
+    - _Stencil: 0
+    - _StencilComp: 8
+    - _StencilOp: 0
+    - _StencilReadMask: 255
+    - _StencilWriteMask: 255
+    - _ZTestMode: 4
+    - _ZwriteMode: 0
+    - _cull: 0
+    m_Colors:
+    - _BoundCenterPosWS: {r: 0, g: 0, b: 0, a: 1}
+    - _ClipBox: {r: -2, g: -2, b: 0, a: 0}
+    - _ClipSoftness: {r: 0, g: 0, b: 0, a: 0}
+    - _Color0: {r: 0.8603976, g: 0.8603976, b: 0.8603976, a: 1}
+    - _DisslveTexSpeedXYTimezFlaotW: {r: 1, g: 0, b: 0.35, a: 0}
+    - _DisturbanceTexSpeedXYTimezFlaotW: {r: 1, g: 1, b: 0.1, a: 0.15}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FloorClipBiasColor: {r: 0, g: 0, b: 0, a: 0}
+    - _FloorClipReference: {r: 0, g: 0, b: 0, a: 0}
+    - _FresnelColor: {r: 0, g: 0, b: 0, a: 0}
+    - _GrayFrom: {r: 0.7830189, g: 0.70252377, b: 0.22530258, a: 1}
+    - _GrayTo: {r: 0.8490566, g: 0.5566928, b: 0.8420907, a: 1}
+    - _MainTexSpeedXYTimez: {r: 0, g: 0, b: 0, a: 0}
+    - _MaskTex_Speed_Time: {r: 0, g: 0, b: 0, a: 0}
+    - _Vector0: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []

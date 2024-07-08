@@ -1,0 +1,67 @@
+#pragma kernel CopyPixel
+#pragma kernel WritePixel
+
+#include "Packages/com.unity.render-pipelines.core/ShaderLibrary/Color.hlsl"
+
+Texture2D<float4> _OriginTex;
+RWTexture2D<float4> RW_Result;
+float2 _Offset;
+float2 _DownSample;
+
+[numthreads(8,8,1)]
+void CopyPixel(uint3 id : SV_DispatchThreadID)
+{
+    float4 col = _OriginTex[id.xy + _Offset];
+    col.xyz = LinearToSRGB(col.xyz);
+    RW_Result[id.xy] = col;
+}
+
+[numthreads(8, 8, 1)]
+void WritePixel(uint3 id : SV_DispatchThreadID)
+{
+    float refer0 = .2, refer1 = .5;
+    float4 col = _OriginTex[id.xy * _DownSample] * .1621;
+
+    float2 offset = float2(0, 1) * _DownSample * refer0;
+    col += _OriginTex[id.xy * _DownSample + offset] * .0983;
+    col += _OriginTex[id.xy * _DownSample - offset] * .0983;
+    offset = float2(1, 0) * _DownSample * refer0;
+    col += _OriginTex[id.xy * _DownSample + offset] * .0983;
+    col += _OriginTex[id.xy * _DownSample - offset] * .0983;
+    offset = float2(-1, 1) * _DownSample * refer0;
+    col += _OriginTex[id.xy * _DownSample + offset] * .0596;
+    col += _OriginTex[id.xy * _DownSample - offset] * .0596;
+    offset = float2(1, 1) * _DownSample * refer0;
+    col += _OriginTex[id.xy * _DownSample + offset] * .0596;
+    col += _OriginTex[id.xy * _DownSample - offset] * .0596;
+
+    offset = float2(0, 1) * _DownSample * refer1;
+    col += _OriginTex[id.xy * _DownSample + offset] * .0219;
+    col += _OriginTex[id.xy * _DownSample - offset] * .0219;
+    offset = float2(1, 0) * _DownSample * refer1;
+    col += _OriginTex[id.xy * _DownSample + offset] * .0219;
+    col += _OriginTex[id.xy * _DownSample - offset] * .0219;
+    offset = float2(-1, 1) * _DownSample * refer1;
+    col += _OriginTex[id.xy * _DownSample + offset] * .003;
+    col += _OriginTex[id.xy * _DownSample - offset] * .003;
+    offset = float2(1, 1) * _DownSample * refer1;
+    col += _OriginTex[id.xy * _DownSample + offset] * .003;
+    col += _OriginTex[id.xy * _DownSample - offset] * .003;
+
+    offset = float2(1, .5) * _DownSample * refer1;
+    col += _OriginTex[id.xy * _DownSample + offset] * .0133;
+    col += _OriginTex[id.xy * _DownSample - offset] * .0133;
+    offset = float2(-1, .5) * _DownSample * refer1;
+    col += _OriginTex[id.xy * _DownSample + offset] * .0133;
+    col += _OriginTex[id.xy * _DownSample - offset] * .0133;
+    offset = float2(.5, 1) * _DownSample * refer1;
+    col += _OriginTex[id.xy * _DownSample + offset] * .0133;
+    col += _OriginTex[id.xy * _DownSample - offset] * .0133;
+    offset = float2(-.5, 1) * _DownSample * refer1;
+    col += _OriginTex[id.xy * _DownSample + offset] * .0133;
+    col += _OriginTex[id.xy * _DownSample - offset] * .0133;
+
+    col.xyz = LinearToSRGB(col.xyz);
+    col.a = col.a < .05 ? 0 : col.a;
+    RW_Result[id.xy + _Offset] = col;
+}

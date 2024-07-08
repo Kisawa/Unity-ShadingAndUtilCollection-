@@ -1,0 +1,46 @@
+#pragma kernel Sub
+#pragma kernel SampleBackground
+
+struct Instancing
+{
+    float4 positionWS;
+    half4 rotateScale;
+    half3 color;
+};
+
+float3 _Point;
+float3 _Normal;
+float _BrushRange;
+float _HitHeight;
+StructuredBuffer<Instancing> _InstancingBuffer;
+AppendStructuredBuffer<Instancing> Append_InstancingBuffer;
+[numthreads(64,1,1)]
+void Sub(uint3 id : SV_DispatchThreadID)
+{
+    Instancing buffer = _InstancingBuffer[id.x];
+    float3 dir = buffer.positionWS.xyz - _Point;
+    float3 proj = dir - _Normal * dot(dir, _Normal);
+    float3 projDir = normalize(proj);
+    float height = length(dir - projDir * dot(dir, projDir));
+    float dis = length(proj);
+    if (dis > _BrushRange || height > _HitHeight)
+    {
+        Append_InstancingBuffer.Append(buffer);
+    }
+}
+
+float4x4 _VP;
+SamplerState LinearClampSampler;
+Texture2D<half4> _CameraOpaqueTexture;
+RWStructuredBuffer<Instancing> RW_InstancingBuffer;
+[numthreads(64, 1, 1)]
+void SampleBackground(uint3 id : SV_DispatchThreadID)
+{
+    Instancing buffer = RW_InstancingBuffer[id.x];
+    float4 positionCS = mul(_VP, float4(buffer.positionWS.xyz, 1));
+    float2 positionNDC_xy = positionCS.xy / positionCS.w;
+    float2 screenUV = positionNDC_xy * 0.5 + 0.5;
+    half3 sampledColor = _CameraOpaqueTexture.SampleLevel(LinearClampSampler, screenUV, 0).rgb;
+    buffer.color = sampledColor;
+    RW_InstancingBuffer[id.x] = buffer;
+}

@@ -1,0 +1,163 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-3002191459015922192
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3432eb64a582e2847a1c44eb41421bfd, type: 3}
+  m_Name: ScreenSpaceOutline
+  m_EditorClassIdentifier: 
+  active: 1
+  Setting:
+    OutlineScale:
+      m_OverrideState: 0
+      m_Value: 1
+    RobertsCrossMultiplier:
+      m_OverrideState: 0
+      m_Value: 5
+    DepthThreshold:
+      m_OverrideState: 0
+      m_Value: 0.15
+    NormalThreshold:
+      m_OverrideState: 0
+      m_Value: 0.75
+    SteepAngleThreshold:
+      m_OverrideState: 0
+      m_Value: 0.5
+    SteepAngleMultiplier:
+      m_OverrideState: 0
+      m_Value: 20
+    Debug:
+      m_OverrideState: 0
+      m_Value: 0
+    ColorTint:
+      m_OverrideState: 0
+      m_Value: {r: 0.7, g: 0.7, b: 0.7, a: 1}
+    Saturation:
+      m_OverrideState: 0
+      m_Value: 3
+    Contrast:
+      m_OverrideState: 0
+      m_Value: 0.85
+--- !u!114 &-1498283976367827181
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b2db86121404754db890f4c8dfe81b2, type: 3}
+  m_Name: Bloom
+  m_EditorClassIdentifier: 
+  active: 1
+  threshold:
+    m_OverrideState: 1
+    m_Value: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 1
+  scatter:
+    m_OverrideState: 0
+    m_Value: 0.7
+  clamp:
+    m_OverrideState: 0
+    m_Value: 65472
+  tint:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+  highQualityFiltering:
+    m_OverrideState: 0
+    m_Value: 0
+  skipIterations:
+    m_OverrideState: 0
+    m_Value: 1
+  dirtTexture:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+    dimension: 1
+  dirtIntensity:
+    m_OverrideState: 0
+    m_Value: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: DefaultVolume
+  m_EditorClassIdentifier: 
+  components:
+  - {fileID: 6784669991486396666}
+  - {fileID: -1498283976367827181}
+  - {fileID: 3238551699724448679}
+--- !u!114 &3238551699724448679
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3432eb64a582e2847a1c44eb41421bfd, type: 3}
+  m_Name: ScreenSpaceOutline
+  m_EditorClassIdentifier: 
+  active: 1
+  Setting:
+    OutlineScale:
+      m_OverrideState: 1
+      m_Value: 0.5
+    RobertsCrossMultiplier:
+      m_OverrideState: 0
+      m_Value: 5
+    DepthThreshold:
+      m_OverrideState: 1
+      m_Value: 0.05
+    NormalThreshold:
+      m_OverrideState: 1
+      m_Value: 0.75
+    SteepAngleThreshold:
+      m_OverrideState: 1
+      m_Value: 1
+    SteepAngleMultiplier:
+      m_OverrideState: 0
+      m_Value: 20
+    Debug:
+      m_OverrideState: 0
+      m_Value: 1
+    ColorTint:
+      m_OverrideState: 1
+      m_Value: {r: 0.49019608, g: 0.49019608, b: 0.49019608, a: 1}
+    Saturation:
+      m_OverrideState: 1
+      m_Value: 2
+    Contrast:
+      m_OverrideState: 0
+      m_Value: 0.85
+--- !u!114 &6784669991486396666
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c23e3b12dc18c42a140437e53d3951, type: 3}
+  m_Name: Tonemapping
+  m_EditorClassIdentifier: 
+  active: 1
+  mode:
+    m_OverrideState: 1
+    m_Value: 2
