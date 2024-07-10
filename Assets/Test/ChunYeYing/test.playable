@@ -486,7 +486,7 @@ MonoBehaviour:
   frameCaptureRuntimeValue:
     PreviewFrameTilingOffset: {x: 1, y: 1, z: 0, w: 0}
     PreviewBackground: {fileID: 0}
-    PreviewSrcBlend: 1
+    PreviewSrcBlend: 5
     PreviewDstBlend: 10
     bloomStrength: 1
     outline: 0

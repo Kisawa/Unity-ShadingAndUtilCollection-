@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Bloom
   m_EditorClassIdentifier: 
   active: 1
+  skipIterations:
+    m_OverrideState: 0
+    m_Value: 1
   threshold:
     m_OverrideState: 1
     m_Value: 1
@@ -31,9 +34,12 @@ MonoBehaviour:
   highQualityFiltering:
     m_OverrideState: 0
     m_Value: 0
-  skipIterations:
+  downscale:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 0
+  maxIterations:
+    m_OverrideState: 0
+    m_Value: 6
   dirtTexture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
@@ -41,6 +47,50 @@ MonoBehaviour:
   dirtIntensity:
     m_OverrideState: 0
     m_Value: 0
+--- !u!114 &-7738930783052357565
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3432eb64a582e2847a1c44eb41421bfd, type: 3}
+  m_Name: ScreenSpaceOutline
+  m_EditorClassIdentifier: 
+  active: 1
+  Setting:
+    OutlineScale:
+      m_OverrideState: 0
+      m_Value: 1
+    RobertsCrossMultiplier:
+      m_OverrideState: 1
+      m_Value: 5
+    DepthThreshold:
+      m_OverrideState: 1
+      m_Value: 0.15
+    NormalThreshold:
+      m_OverrideState: 1
+      m_Value: 0.75
+    SteepAngleThreshold:
+      m_OverrideState: 1
+      m_Value: 0.5
+    SteepAngleMultiplier:
+      m_OverrideState: 1
+      m_Value: 20
+    Debug:
+      m_OverrideState: 1
+      m_Value: 0
+    ColorTint:
+      m_OverrideState: 1
+      m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    Saturation:
+      m_OverrideState: 1
+      m_Value: 3
+    Contrast:
+      m_OverrideState: 1
+      m_Value: 0.85
 --- !u!114 &-7011558710299706105
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -69,58 +119,6 @@ MonoBehaviour:
   rounded:
     m_OverrideState: 0
     m_Value: 0
---- !u!114 &-4294121930579417329
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1c3a6bcb2b59eb4db1fa0717a7e5785, type: 3}
-  m_Name: DepthBlur
-  m_EditorClassIdentifier: 
-  active: 0
-  DepthSetting:
-    DepthFocus:
-      m_OverrideState: 1
-      m_Value: 15
-    Smoothness:
-      m_OverrideState: 1
-      m_Value: 15
-    BlendPower:
-      m_OverrideState: 1
-      m_Value: 1.25
-  BokehBlurSetting:
-    Iteration:
-      m_OverrideState: 1
-      m_Value: 16
-    Spread:
-      m_OverrideState: 1
-      m_Value: 0.75
-    Shape:
-      m_OverrideState: 0
-      m_Value: 6
-    BokehHardness:
-      m_OverrideState: 0
-      m_Value: 1
-    TrickOn:
-      m_OverrideState: 0
-      m_Value: 0
-    GoldenAngle:
-      m_OverrideState: 0
-      m_Value: 2.3398
-  BilateralBlurSetting:
-    Spread:
-      m_OverrideState: 1
-      m_Value: 0.001
-    ColorSigma:
-      m_OverrideState: 1
-      m_Value: 0.15
-    SpaceSigma:
-      m_OverrideState: 1
-      m_Value: 5
 --- !u!114 &-1078976943336500779
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -164,15 +162,15 @@ MonoBehaviour:
       m_OverrideState: 0
       m_Value: 0.01
     ShadowStrength:
-      m_OverrideState: 0
+      m_OverrideState: 1
       m_Value: 0.5
     BlurSetting:
       Spread:
         m_OverrideState: 1
         m_Value: 0.001
       ColorSigma:
-        m_OverrideState: 0
-        m_Value: 0.1
+        m_OverrideState: 1
+        m_Value: 0.25
       SpaceSigma:
         m_OverrideState: 0
         m_Value: 10
@@ -194,7 +192,7 @@ MonoBehaviour:
   - {fileID: -7011558710299706105}
   - {fileID: -1078976943336500779}
   - {fileID: -514826990550957722}
-  - {fileID: -4294121930579417329}
+  - {fileID: -7738930783052357565}
 --- !u!114 &849379129802519247
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -211,3 +209,27 @@ MonoBehaviour:
   mode:
     m_OverrideState: 1
     m_Value: 2
+  neutralHDRRangeReductionMode:
+    m_OverrideState: 0
+    m_Value: 2
+  acesPreset:
+    m_OverrideState: 0
+    m_Value: 3
+  hueShiftAmount:
+    m_OverrideState: 0
+    m_Value: 0
+  detectPaperWhite:
+    m_OverrideState: 0
+    m_Value: 0
+  paperWhite:
+    m_OverrideState: 0
+    m_Value: 300
+  detectBrightnessLimits:
+    m_OverrideState: 0
+    m_Value: 1
+  minNits:
+    m_OverrideState: 0
+    m_Value: 0.005
+  maxNits:
+    m_OverrideState: 0
+    m_Value: 1000
